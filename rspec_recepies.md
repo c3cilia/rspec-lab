@@ -114,5 +114,40 @@ class Zombie
 end
 ```
 
+###Pending tests
+* leave the body of the it empty
+Example 
+
+```
+describe Zombie do 
+    it "is named Ash" do
+        # leave the body of it empty
+end 
+```
+
+* add x before it
+Example 
+```
+describe Zombie do 
+    xit "is named Ash" do # xit makes this pend
+        zombie = Zombie.new 
+        expect(zombie.name).to eq("Ash")
+    end 
+end 
+```
+
+* Use the pending key word
+Example 
+
+```
+describe Zombie do 
+    it "is named Ash" do
+        pending
+        zombie = Zombie.new 
+        expect(zombie.name).to eq("Ash")
+    end 
+end
+```
+
 
 
