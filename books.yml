@@ -1,0 +1,17 @@
+---
+- !ruby/object:Book
+  title: Fifity shades of black
+  author: Jennice obrian
+  category: :erotic
+- !ruby/object:Book
+  title: The wild wild west
+  author: Juniper lee
+  category: :erotic
+- !ruby/object:Book
+  title: My pet
+  author: Sydney Sheldon
+  category: :adventure
+- !ruby/object:Book
+  title: The blood moon
+  author: Harry cooper
+  category: :horror
