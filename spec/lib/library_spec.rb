@@ -51,4 +51,8 @@ describe "Library Object" do
 		books2 = lib2.books.map{|book| book.title}
 		expect(books).to eql(books2)
 	end 
+
+	it "" do
+	end
+
 end 
