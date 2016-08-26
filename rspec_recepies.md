@@ -85,7 +85,7 @@ the equal matcher test for identical objects in memory
 
 Note: expect does not support == matcher 
 
-##### Despricated matchers
+##### Depricated matchers
 The 'have' matchers was deprecated a long time a go
 
 #####Testing predicates that you have defined in the class
@@ -165,7 +165,7 @@ describe Zombie do
     end 
 end
 ```
-###using #method name in the it block
+###using #method name in the "it" block
 Example
 
 ```
@@ -228,5 +228,52 @@ describe "launch the rocket" do
 end
 ```
 
+###Shared_examples block
+Shared examples make testing compositions of objects much easier. This has been nicely explained in [this blog](http://modocache.io/shared-examples-in-rspec)
 
+###let() and let!()
+This function in rspec is suppose to define a memoized helper method. In computing, memoization is an optimization technique used primarily to speed up computer programs by storing the results of expensive function calls and returning the cached result when the same inputs occur again.
+
+Use the let define a memoized helper method
+
+```
+$count = 0
+describe "let" do
+  let(:count) { $count += 1 }
+
+  it "memoizes the value" do
+    count.should == 1
+    count.should == 1
+  end
+
+  it "is not cached across examples" do
+    count.should == 2
+  end
+end
+```
+
+Use the let! to define a memoized helper method that is called in a before hook
+```
+$count = 0
+describe "let!" do
+  invocation_order = []
+
+  let!(:count) do
+    invocation_order << :let!
+    $count += 1
+  end
+
+  it "calls the helper method in a before hook" do
+    invocation_order << :example
+    expect(invocation_order).to eq([:let!, :example])
+    expect(count).to eq(1)
+  end
+
+  it "should just test" do
+    invocation_order << :example2
+    expect(invocation_order).to eq([:let!, :example, :let!,:example2])
+    expect(count).to eq(2)
+  end
+end
+```
 
